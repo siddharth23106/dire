@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide Left on Scroll (Repeat)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef7f7;
+      padding: 50px 20px;
+      margin: 0;
+    }
+
+    .block {
+      max-width: 700px;
+      margin: 100px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateX(-100px);
+      transition: transform 0.8s ease, opacity 0.8s ease;
+    }
+
+    .block.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="block"> 
+    <h2>Slide In 1</h2>
+    <p>This block will slide from the left when you scroll into view.</p>
+  </div>
+
+  <div class="block"> 
+    <h2>Slide In 2</h2>
+    <p>Jitni baar scroll karoge, utni baar ye effect chalega.</p>
+  </div>
+
+  <div class="block"> 
+    <h2>Slide In 3</h2>
+    <p>Scroll down more to see repeated animation on each block.</p>
+  </div>
+  <div class="block"> 
+    <h2>Slide In 1</h2>
+    <p>This block will slide from the left when you scroll into view.</p>
+  </div>
+
+  <div class="block"> 
+    <h2>Slide In 2</h2>
+    <p>Jitni baar scroll karoge, utni baar ye effect chalega.</p>
+  </div>
+
+  <div class="block"> 
+    <h2>Slide In 3</h2>
+    <p>Scroll down more to see repeated animation on each block.</p>
+  </div>
+  <div class="block"> 
+    <h2>Slide In 1</h2>
+    <p>This block will slide from the left when you scroll into view.</p>
+  </div>
+
+  <div class="block"> 
+    <h2>Slide In 2</h2>
+    <p>Jitni baar scroll karoge, utni baar ye effect chalega.</p>
+  </div>
+
+  <div class="block"> 
+    <h2>Slide In 3</h2>
+    <p>Scroll down more to see repeated animation on each block.</p>
+  </div>
+
+  <script>
+    function revealOnScroll() {
+      const blocks = document.querySelectorAll('.block');
+      const windowHeight = window.innerHeight;
+
+      blocks.forEach(block => {
+        const rect = block.getBoundingClientRect();
+        if (rect.top < windowHeight - 100 && rect.bottom > 0) {
+          block.classList.add('visible');
+        } else {
+          block.classList.remove('visible'); // remove to re-animate next time
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll); // trigger once on load
+  </script>
+</body>
+</html>
